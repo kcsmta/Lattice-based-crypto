@@ -33,6 +33,24 @@ After this step, all ipython files inside folder `Lattice-based-crypto` will tak
 ```
 
 ## Working on github
+1. (To check git status)
 ```
-(venv) $ git add --all -- ':!venv'
+(venv) $ git status
+```
+
+2. Add all files (except `venv` folder) from `working directory` to `staging area`:
+```
+(venv) $ git add --all -- . ':!venv/*'
+```
+3. Commit files in `staging` to `localrepo`:
+```
+(venv) $ git commit -m 'comment somthing'
+```
+4. If you do any change in github, e.g. delete, add a file/folder, remember to push the github repo:
+```
+(venv) $ git pull
+```
+5. Push changes to the github repo:
+```
+(venv) $ git push
 ```
