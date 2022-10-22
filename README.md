@@ -19,12 +19,6 @@ Step 3: From the inside the virtual enviroment, install ipykernel
 (venv) $ pip install ipykernel
 ```
 
-Step 4: Install a new kernel. 
-```
-(venv) $ ipython kernel install --user --name=Lattice-based-crypto
-```
-After this step, all ipython files inside folder `Lattice-based-crypto` will take run inside virtual enviroment. Note: chose the virtual environment for jupyter notebooks's kernel by click the icon on the top right corner in Visual Studio code.
-
 ![](/resources/figures/install.png)
 
 ## Install requirements
