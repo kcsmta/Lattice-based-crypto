@@ -4,54 +4,86 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{authblk} % for affiliations 
+\usepackage[most]{tcolorbox} % for paragraph in box
 \usepackage[colorinlistoftodos]{todonotes}
 
+% for theorem, lemma
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{sublemma}{Lemma}[section]
+
+% for paragraph in box
+% a box with 3 parameters are: box title, title box color, and box color   
+\newtcolorbox{scheme}[3]{
+	title=#1,
+	boxed title style={size=small,colback=#2},
+	enhanced,drop shadow={black!50!white},
+	coltitle=black,
+	top=0.3in,
+	attach boxed title to top left=
+	{xshift=1.5em,yshift=-\tcboxedtitleheight/2},
+	colback=#3
+	}
+
 \title{Fully homomorphic encryption (FHE) schemes}
+\author{Khanh Nguyen}
+\author{Dung Duong}
+\author{Willy Susilo}
+\affil{Instutute of Cybersecurity and Cryptology, University of Wollongong, Australia}
 
 \begin{document}
 	
 	\maketitle
-	\author{Khanh Nguyen}
 	
-	\section{Section 1}
+	\section{Preliminaries}
+	Learning with error (LWE). 
+	\begin{theorem}
+		content.
+	\end{theorem}
+	\begin{lemma}
+		x+y=z
+	\end{lemma}
+	\begin{sublemma}
+		z-r+t=3
+	\end{sublemma}
+	Ring Learning with error (RLWE). Lemma.
+%	\begin{figure}
+%		\centering
+%		\includegraphics[height=5cm]{./resources/figures/test.png}
+%		\caption{Thao Dien an cut}
+%	\end{figure}
 	
-	Voici le problème direct que nous allons être amenés à résoudre à chaque itération de notre algorithme:
-	\begin{equation}
-		\begin{cases}
-			u_{t} - Lu = \tilde{c}.\chi^{-1}.u + g &\quad (x,t)\in Q \\
-			u(x,0) = 0 &\quad x\in \Omega \\
-			Bu = b(x,t) &\quad (x,t) \in S\\
-		\end{cases}\\
-	\end{equation}\\
 	
-	On utilise exactement les mêmes notations que dans Prilepko \& Kostin.
-	\begin{figure}
-		\centering
-		\includegraphics[height=5cm]{./resources/figures/test.png}
-		\caption{Thao Dien an cut}
-	\end{figure}
+	\section{FHE schemes}
 	
+	\subsection{BV scheme}
 	
-	\section{Section 2}
+	The BV scheme was introduce by Brakerski and Vinod Vaikuntanathan in \cite{brakerski2014efficient} (LWE) and \cite{brakerski2011fully} (RLWE).
 	
-	\subsection{Section 2.1}
-	
-	On rappelle la définition de l'opérateur A:
-	\begin{equation}
-		Ac = l(u_{t}(x,t,;c)) - L\chi - lg
-	\end{equation}
-	
-	\subsection{Section 2.2}
-	\begin{itemize}
-		\item On initialise les constante $\Delta t$, $\delta>0$ et $T = n*\Delta t$, la variable $i=0$ et les fonctions $u^{0}=0$ , $c(x) < 0$ et $\chi(x)>0$.
-		\item Tant que $\parallel lu^{n}-\chi \parallel_{\infty} > \delta$ : (on ignore la condition à la première itération)
+	\subsection{BGV scheme}
+	\cite{brakerski2014leveled}
+
+	\subsection{BFV scheme}
+	In , \textbf{B}rakerski \cite{brakerski2012fully} proposed a FHE scheme based on LWE problem. Then, \textbf{F}an Junfeng and \textbf{V}ercauteren Frederik \cite{fan2012somewhat} introduced RLWE version of Brakerski's scheme. The scheme is called BFV.
+	 
+	\begin{scheme}{BFV scheme}{white}{lightgray}
+		Let R = $Z$
 		\begin{itemize}
-			\item Pour $i$ de $0$ à $n-1$:
+			\item Key generation:
+			\item Encryption:
+			\item Decryption:
+			\item Homomorphic operations
 			\begin{itemize}
-				\item On calcule $u^{i+1}$ par résolution du problème direct
+				\item Add
+				\item MultConst
+				\item Mult 
 			\end{itemize}
-			\item $c \gets Ac$ pour $u=u^{n} $
 		\end{itemize}
-		\item On renvoie la dernière valeur de $c$.
-	\end{itemize}
+	\end{scheme}
+	
+	
+\pagebreak
+\bibliographystyle{alpha}
+\bibliography{references}
 \end{document}

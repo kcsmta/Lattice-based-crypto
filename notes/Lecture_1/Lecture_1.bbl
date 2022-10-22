@@ -1,0 +1,33 @@
+\begin{thebibliography}{BGV14}
+
+\bibitem[BGV14]{brakerski2014leveled}
+Zvika Brakerski, Craig Gentry, and Vinod Vaikuntanathan.
+\newblock (leveled) fully homomorphic encryption without bootstrapping.
+\newblock {\em ACM Transactions on Computation Theory (TOCT)}, 6(3):1--36,
+  2014.
+
+\bibitem[Bra12]{brakerski2012fully}
+Zvika Brakerski.
+\newblock Fully homomorphic encryption without modulus switching from classical
+  gapsvp.
+\newblock In {\em Annual Cryptology Conference}, pages 868--886. Springer,
+  2012.
+
+\bibitem[BV11]{brakerski2011fully}
+Zvika Brakerski and Vinod Vaikuntanathan.
+\newblock Fully homomorphic encryption from ring-lwe and security for key
+  dependent messages.
+\newblock In {\em Annual cryptology conference}, pages 505--524. Springer,
+  2011.
+
+\bibitem[BV14]{brakerski2014efficient}
+Zvika Brakerski and Vinod Vaikuntanathan.
+\newblock Efficient fully homomorphic encryption from (standard) lwe.
+\newblock {\em SIAM Journal on computing}, 43(2):831--871, 2014.
+
+\bibitem[FV12]{fan2012somewhat}
+Junfeng Fan and Frederik Vercauteren.
+\newblock Somewhat practical fully homomorphic encryption.
+\newblock {\em Cryptology ePrint Archive}, 2012.
+
+\end{thebibliography}
