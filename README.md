@@ -18,8 +18,9 @@ Step 3: From the inside the virtual enviroment, install ipykernel
 ```
 (venv) $ pip install ipykernel
 ```
+Note: chose the virtual environment for jupyter notebooks's kernel by click the icon on the top right corner in Visual Studio code.
 
-![](/resources/figures/install.png)
+![](resources/figures/install.png)
 
 ## Install requirements
 ```
