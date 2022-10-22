@@ -1,0 +1,72 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+
+\title{Résolution numérique du problème inverse}
+
+\begin{document}
+	
+	\maketitle
+	
+	\section{Le problème direct}
+	
+	Voici le problème direct que nous allons être amenés à résoudre à chaque itération de notre algorithme:
+	\begin{equation}
+		\begin{cases}
+			u_{t} - Lu = \tilde{c}.\chi^{-1}.u + g &\quad (x,t)\in Q \\
+			u(x,0) = 0 &\quad x\in \Omega \\
+			Bu = b(x,t) &\quad (x,t) \in S\\
+		\end{cases}\\
+	\end{equation}\\
+	
+	On utilise exactement les mêmes notations que dans Prilepko \& Kostin.
+	\begin{center}
+		\includegraphics[height=5cm]{./resources/figures/test.png}
+	\end{center}
+	
+	\section{Discrétisation et formulation variationnelle}
+	
+	On discrétise le problème en temps selon le schéma de Crank - Nicolson :
+	\begin{equation}
+		\frac{u^{i+1}-u^{i}}{\Delta t} = \frac{1}{2}.\Bigg(Lu^{i+1} + \tilde{c}.\chi^{-1}.u^{i+1} + Lu^{i} + \tilde{c}.\chi^{-1}.u^{i} \Bigg) + g\\
+	\end{equation}\\
+	
+	La formulation variationnelle est donc par exemple la suivante (pour L = $\Delta$, conditions de Dirichlet aux bords):\\
+	\begin{equation}
+		a(u^{i+1},v)=l(v)\\
+	\end{equation}
+	Avec:\\
+	\begin{equation}
+		a(u^{i+1},v) = \frac{1}{\Delta t} \int_{\Omega}u^{i+1}.v + \frac{1}{2} \int_{\Omega}\nabla u. \nabla v - \tilde{c}\chi^{-1}u^{i+1}.v\\
+	\end{equation}
+	\begin{equation}
+		l(v) = \frac{1}{\Delta t} \int_{\Omega}u^{i}.v + \frac{1}{2} \int_{\Omega}(Lu^{i} + \tilde{c}.\chi^{-1}.u^{i}).v
+	\end{equation}
+	
+	\section{L'algorithme}
+	
+	\subsection{L'opérateur A}
+	
+	On rappelle la définition de l'opérateur A:
+	\begin{equation}
+		Ac = l(u_{t}(x,t,;c)) - L\chi - lg
+	\end{equation}
+	
+	\subsection{Déroulement de l'algorithme}
+	\begin{itemize}
+		\item On initialise les constante $\Delta t$, $\delta>0$ et $T = n*\Delta t$, la variable $i=0$ et les fonctions $u^{0}=0$ , $c(x) < 0$ et $\chi(x)>0$.
+		\item Tant que $\parallel lu^{n}-\chi \parallel_{\infty} > \delta$ : (on ignore la condition à la première itération)
+		\begin{itemize}
+			\item Pour $i$ de $0$ à $n-1$:
+			\begin{itemize}
+				\item On calcule $u^{i+1}$ par résolution du problème direct
+			\end{itemize}
+			\item $c \gets Ac$ pour $u=u^{n} $
+		\end{itemize}
+		\item On renvoie la dernière valeur de $c$.
+	\end{itemize}
+\end{document}
